@@ -18,8 +18,8 @@
                 <DataGridTextColumn x:Name="idColumn" Binding="{Binding id}" Header="id" Width="Auto"/>
                 <DataGridTextColumn x:Name="imeColumn" Binding="{Binding ime}" Header="ime" Width="Auto"/>
                 <DataGridTextColumn x:Name="naslovColumn" Binding="{Binding naslov}" Header="naslov" Width="Auto"/>
-                <DataGridTextColumn x:Name="kraj_idColumn" Binding="{Binding kraj_id}" Header="kraj id" Width="Auto"/>
-                <DataGridTextColumn x:Name="vrsta_idColumn" Binding="{Binding vrsta_id}" Header="vrsta id" Width="Auto"/>
+                <DataGridTextColumn x:Name="kraj_idColumn" Binding="{Binding kraj_id}" Header="kraj_id" Width="Auto"/>
+                <DataGridTextColumn x:Name="vrsta_idColumn" Binding="{Binding vrsta_id}" Header="vrsta_id" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
 
