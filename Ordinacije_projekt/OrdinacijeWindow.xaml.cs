@@ -36,16 +36,5 @@ namespace Ordinacije_projekt
             mainWin.Show();
             this.Close();
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            Ordinacije_projekt.ordinacije_projekt ordinacije_projekt = ((Ordinacije_projekt.ordinacije_projekt)(this.FindResource("ordinacije_projekt")));
-            // Load data into the table ordinacije. You can modify this code as needed.
-            Ordinacije_projekt.ordinacije_projektTableAdapters.ordinacijeTableAdapter ordinacije_projektordinacijeTableAdapter = new Ordinacije_projekt.ordinacije_projektTableAdapters.ordinacijeTableAdapter();
-            ordinacije_projektordinacijeTableAdapter.Fill(ordinacije_projekt.ordinacije);
-            System.Windows.Data.CollectionViewSource ordinacijeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("ordinacijeViewSource")));
-            ordinacijeViewSource.View.MoveCurrentToFirst();
-        }
     }
 }
