@@ -9,9 +9,14 @@
     <Grid Margin="0,0,0,-6">
         <Label x:Name="username_label" Content="Prijavljeni ste kot: _____________________" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
         <Button Content="Odjava" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="79" Height="26" Click="Button_Click"/>
-        <DataGrid Margin="10,41,10,41">
+        <DataGrid Margin="10,41,10,41" Name="OrdinacijeGrid" ItemsSource="{Binding}" IsReadOnly="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="idColumn" Header="ID" Width="Auto"/>
+                <DataGridTextColumn x:Name="idColumn" Header="ID" Binding="{Binding id}" Width="Auto"/>
+                <DataGridTextColumn x:Name="imeColumn" Header="Ime" Binding="{Binding ime}" Width="Auto"/>
+                <DataGridTextColumn x:Name="naslovColumn" Header="Naslov" Binding="{Binding naslov}" Width="Auto"/>
+                <DataGridTextColumn x:Name="krajColumn" Header="Kraj" Binding="{Binding kraj}" Width="Auto"/>
+                <DataGridTextColumn x:Name="vrstaColumn" Header="Vrsta" Binding="{Binding vrsta}" Width="Auto"/>
+                <DataGridTextColumn x:Name="zdravnikColumn" Header="zdravnik" Binding="{Binding zdravnik}" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Ordinacije_projekt
 {
@@ -97,6 +98,98 @@ namespace Ordinacije_projekt
                     }
                 }
             }
+        }
+
+        public static int RowCount()
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+            int rowCount = 1;
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd2 = new NpgsqlCommand())
+                {
+                    cmd2.Connection = conn;
+                    cmd2.CommandText = "SELECT COUNT(id) FROM ordinacije;";
+                    using (var reader2 = cmd2.ExecuteReader())
+                    {
+                        while (reader2.Read())
+                        {
+                            rowCount = reader2.GetInt32(0);
+                        }
+                    }
+                }
+                return rowCount;
+            }
+        }
+
+        public static string[,] TableRow()
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+            int rowCount = RowCount();
+
+            string[,] arr = new string[40,8];
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+
+                for (int i = 1; i <= rowCount; i++)
+                {
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText =
+                        "SELECT o.id, o.ime, o.naslov, k.ime, v.ime, z.ime, z.priimek" +
+                        " FROM ordinacije o" +
+                        " INNER JOIN kraji k on k.id = o.kraj_id" +
+                        " INNER JOIN vrste_ordinacij v on v.id = o.vrsta_id" +
+                        " INNER JOIN \"Entity9\" e on o.id = e.ordinacija_id" +
+                        " INNER JOIN zdravniki z on z.id = e.zdravnik_id" +
+                        " WHERE o.id = " + i + " LIMIT 1;";
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    int x = reader.GetInt32(0);
+                                    arr[i, 0] = x.ToString();
+                                    arr[i, 1] = reader.GetString(1);
+                                    arr[i, 2] = reader.GetString(2);
+                                    arr[i, 3] = reader.GetString(3);
+                                    arr[i, 4] = reader.GetString(4);
+                                    arr[i, 5] = reader.GetString(5);
+                                    string temp1 = reader.GetString(6);
+
+                                    arr[i, 5] = arr[i, 5] + " " + temp1;
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nekaj je šlo narobe.");
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            return arr;
         }
     }
 }
