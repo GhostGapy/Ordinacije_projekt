@@ -1,0 +1,15 @@
+﻿<Window x:Class="Ordinacije_projekt.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ordinacije_projekt"
+        mc:Ignorable="d"
+        Title="Login" Height="292" Width="356">
+    <Grid>
+        <TextBox x:Name="username_box" HorizontalAlignment="Left" Margin="55,59,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Prijavi se" HorizontalAlignment="Left" Margin="55,144,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <PasswordBox x:Name="password_box" HorizontalAlignment="Left" Margin="55,99,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Nazaj" HorizontalAlignment="Left" Margin="155,139,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+    </Grid>
+</Window>

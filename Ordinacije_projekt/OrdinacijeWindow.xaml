@@ -1,0 +1,28 @@
+﻿<Window x:Class="Ordinacije_projekt.OrdinacijeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ordinacije_projekt"
+        mc:Ignorable="d"
+        Title="OrdinacijeWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:ordinacije_projekt x:Key="ordinacije_projekt"/>
+        <CollectionViewSource x:Key="ordinacijeViewSource" Source="{Binding ordinacije, Source={StaticResource ordinacije_projekt}}"/>
+    </Window.Resources>
+    <Grid Margin="0,0,0,-6" DataContext="{StaticResource ordinacijeViewSource}">
+        <Label x:Name="username_label" Content="Prijavljeni ste kot: _____________________" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button Content="Odjava" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="79" Height="26" Click="Button_Click"/>
+        <DataGrid x:Name="ordinacijeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,41,10,45">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding id}" Header="id" Width="Auto"/>
+                <DataGridTextColumn x:Name="imeColumn" Binding="{Binding ime}" Header="ime" Width="Auto"/>
+                <DataGridTextColumn x:Name="naslovColumn" Binding="{Binding naslov}" Header="naslov" Width="Auto"/>
+                <DataGridTextColumn x:Name="kraj_idColumn" Binding="{Binding kraj_id}" Header="kraj id" Width="Auto"/>
+                <DataGridTextColumn x:Name="vrsta_idColumn" Binding="{Binding vrsta_id}" Header="vrsta id" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Window>
