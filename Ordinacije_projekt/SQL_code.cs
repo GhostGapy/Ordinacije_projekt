@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -100,6 +102,142 @@ namespace Ordinacije_projekt
             }
         }
 
+        public static int vrsteCount()
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+            int vrsteCount = 0;
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd2 = new NpgsqlCommand())
+                {
+                    cmd2.Connection = conn;
+                    cmd2.CommandText = "SELECT COUNT(id) FROM vrste_ordinacij;";
+                    using (var reader2 = cmd2.ExecuteReader())
+                    {
+                        while (reader2.Read())
+                        {
+                            vrsteCount = reader2.GetInt32(0);
+                        }
+                    }
+                }
+                return vrsteCount;
+            }
+        }
+
+        public static string[] VrsteOrdinacij()
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+
+            string[] vrsteOr = new string[5];
+            int x = vrsteCount();
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                for(int i = 0; i <= x; i++)
+                {
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        int _i = i + 1;
+                        cmd.Connection = conn;
+                        cmd.CommandText = "SELECT ime FROM vrste_ordinacij WHERE id="+ _i +";";
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                vrsteOr[i] = reader.GetString(0);
+                            }
+                        }
+                    }
+                }
+                return vrsteOr;
+            }
+        }
+
+
+        public static int krajiCount()
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+            int krajiCount = 0;
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd2 = new NpgsqlCommand())
+                {
+                    cmd2.Connection = conn;
+                    cmd2.CommandText = "SELECT COUNT(id) FROM kraji;";
+                    using (var reader2 = cmd2.ExecuteReader())
+                    {
+                        while (reader2.Read())
+                        {
+                            krajiCount = reader2.GetInt32(0);
+                        }
+                    }
+                }
+                return krajiCount;
+            }
+        }
+
+
+        public static string[] Kraji()
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+
+            string[] kraji = new string[500];
+            int x = krajiCount();
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                for (int i = 0; i <= x; i++)
+                {
+                    using (var cmd = new NpgsqlCommand())
+                    {
+                        int _i = i + 1;
+                        cmd.Connection = conn;
+                        cmd.CommandText = "SELECT ime FROM kraji WHERE id=" + _i + ";";
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                kraji[i] = reader.GetString(0);
+                            }
+                        }
+                    }
+                }
+                return kraji;
+            }
+        }
+
+
+
         public static int RowCount()
         {
             string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
@@ -185,11 +323,32 @@ namespace Ordinacije_projekt
                         }
                     }
                 }
-
-
             }
-
             return arr;
+        }
+
+
+
+        public static void DodajOrdinacijo(string _ime, string _vrsta, string _kraj, string _naslov, string _z_ime, string _z_priimek)
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT DodajOrdinacijo('" + _ime + "', '" + _naslov + "', '" + _kraj + "', '" + _vrsta + "', '" + _z_ime + "', '" + _z_priimek + "')";
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

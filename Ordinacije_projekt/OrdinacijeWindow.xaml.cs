@@ -31,15 +31,7 @@ namespace Ordinacije_projekt
             InitializeComponent();
             username_label.Content = "Prijavljeni ste kot: " + username;
 
-            int rowCount = SQL_code.RowCount();
-
-            string[,] array = SQL_code.TableRow();
-
-            for (int i = 1; i <= rowCount; i++)
-            {
-                OrdinacijeGrid.Items.Add(new { id = array[i, 0], ime = array[i,1], naslov = array[i,2], kraj = array[i,3], vrsta = array[i,4], zdravnik = array[i,5] });
-            }
-
+            Osvezi();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,6 +39,30 @@ namespace Ordinacije_projekt
             MainWindow mainWin = new MainWindow();
             mainWin.Show();
             this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Osvezi();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DodajOrdinacijo dodaj_ordinacijo = new DodajOrdinacijo();
+            dodaj_ordinacijo.Show();
+        }
+
+        public void Osvezi()
+        {
+            OrdinacijeGrid.Items.Clear();
+            int rowCount = SQL_code.RowCount();
+
+            string[,] array = SQL_code.TableRow();
+
+            for (int i = 1; i <= rowCount; i++)
+            {
+                OrdinacijeGrid.Items.Add(new { id = array[i, 0], ime = array[i, 1], naslov = array[i, 2], kraj = array[i, 3], vrsta = array[i, 4], zdravnik = array[i, 5] });
+            }
         }
     }
 }

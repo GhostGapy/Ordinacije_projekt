@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ordinacije_projekt"
         mc:Ignorable="d"
-        Title="OrdinacijeWindow" Height="450" Width="800">
+        Title="OrdinacijeWindow" Height="501" Width="773">
     <Grid Margin="0,0,0,-6">
         <Label x:Name="username_label" Content="Prijavljeni ste kot: _____________________" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
         <Button Content="Odjava" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="79" Height="26" Click="Button_Click"/>
-        <DataGrid Margin="10,41,10,41" Name="OrdinacijeGrid" ItemsSource="{Binding}" IsReadOnly="True" >
+        <DataGrid Margin="10,41,10,65" Name="OrdinacijeGrid" ItemsSource="{Binding}" IsReadOnly="True" >
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="idColumn" Header="ID" Binding="{Binding id}" Width="Auto"/>
                 <DataGridTextColumn x:Name="imeColumn" Header="Ime" Binding="{Binding ime}" Width="Auto"/>
@@ -19,6 +19,10 @@
                 <DataGridTextColumn x:Name="zdravnikColumn" Header="zdravnik" Binding="{Binding zdravnik}" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Label x:Name="label_select" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,13" VerticalAlignment="Bottom" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Content="Osveži" HorizontalAlignment="Right" Margin="0,0,10,13" VerticalAlignment="Bottom" Width="79" Height="30" VerticalContentAlignment="Center" Click="Button_Click_1"/>
+        <Button Content="Dodaj" HorizontalAlignment="Right" Margin="0,0,94,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center" Click="Button_Click_2"/>
+        <Button Content="Uredi" HorizontalAlignment="Right" Margin="0,0,179,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>
