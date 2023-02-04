@@ -67,7 +67,7 @@ namespace Ordinacije_projekt
 
 
                 SQL_code.DodajOrdinacijo(ime, vrsta, kraj, naslov, z_ime, z_priimek);
-                title.Content = ime + " " + vrsta + " " + kraj + " " + naslov + " " + z_ime + " " + z_priimek;
+                this.Close();
             }
 
         }

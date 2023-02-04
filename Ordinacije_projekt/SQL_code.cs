@@ -27,19 +27,13 @@ namespace Ordinacije_projekt
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT * FROM users WHERE username = @username AND password1 = @password";
+                    cmd.CommandText = "SELECT Login(@username, @password)";
                     cmd.Parameters.AddWithValue("username", userName);
                     cmd.Parameters.AddWithValue("password", userPassword1);
                     using (var reader = cmd.ExecuteReader())
                     {
-                        if (reader.HasRows)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                        reader.Read();
+                        return reader.GetBoolean(0);
                     }
                 }
             }
@@ -61,46 +55,18 @@ namespace Ordinacije_projekt
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO users (username, password1) VALUES (@username, @password)";
+                    cmd.CommandText = "SELECT Register(@username, @password)";
                     cmd.Parameters.AddWithValue("username", userName);
                     cmd.Parameters.AddWithValue("password", userPassword1);
-                    cmd.ExecuteNonQuery();
-                    return true;
-                }
-            }
-        }
-
-        public static bool freeUsername(string username)
-        {
-            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
-            string db_name = "neondb";
-            string db_username = "GhostGapy";
-            string db_password = "G4XZhDPTB0WC";
-            string db_port = "5432";
-
-            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
-            using (var conn = new NpgsqlConnection(connString))
-            {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand())
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT * FROM users WHERE username = @username";
-                    cmd.Parameters.AddWithValue("username", username);
                     using (var reader = cmd.ExecuteReader())
                     {
-                        if (reader.HasRows)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            return true;
-                        }
+                        reader.Read();
+                        return reader.GetBoolean(0);
                     }
                 }
             }
         }
+
 
         public static int vrsteCount()
         {
@@ -283,37 +249,45 @@ namespace Ordinacije_projekt
             using (var conn = new NpgsqlConnection(connString))
             {
                 conn.Open();
-
-                for (int i = 1; i <= rowCount; i++)
-                {
+                int y = 1;
+                
+                
                     using (var cmd = new NpgsqlCommand())
                     {
                         cmd.Connection = conn;
                         cmd.CommandText =
-                        "SELECT o.id, o.ime, o.naslov, k.ime, v.ime, z.ime, z.priimek" +
-                        " FROM ordinacije o" +
-                        " INNER JOIN kraji k on k.id = o.kraj_id" +
-                        " INNER JOIN vrste_ordinacij v on v.id = o.vrsta_id" +
-                        " INNER JOIN \"Entity9\" e on o.id = e.ordinacija_id" +
-                        " INNER JOIN zdravniki z on z.id = e.zdravnik_id" +
-                        " WHERE o.id = " + i + " LIMIT 1;";
+                        "SELECT * FROM OrdinacijaVsebinaString();";
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
                                 {
-                                    int x = reader.GetInt32(0);
-                                    arr[i, 0] = x.ToString();
-                                    arr[i, 1] = reader.GetString(1);
-                                    arr[i, 2] = reader.GetString(2);
-                                    arr[i, 3] = reader.GetString(3);
-                                    arr[i, 4] = reader.GetString(4);
-                                    arr[i, 5] = reader.GetString(5);
-                                    string temp1 = reader.GetString(6);
+                                    string x = reader.GetString(0);
+                                    string[] _x = x.Split('%');
+                                    while(y < _x.Length)
+                                    {
+                                        for (int i = 1; i <= rowCount; i++)
+                                        {
+                                            arr[i, 0] = _x[y];
+                                            y++;
+                                            arr[i, 1] = _x[y];
+                                            y++;
+                                            arr[i, 2] = _x[y];
+                                            y++;
+                                            arr[i, 3] = _x[y];
+                                            y++;
+                                            arr[i, 4] = _x[y];
+                                            y++;
+                                            arr[i, 5] = _x[y];
+                                            y++;
 
-                                    arr[i, 5] = arr[i, 5] + " " + temp1;
+                                            string temp1 = _x[y];
+                                            y++;
 
+                                            arr[i, 5] = arr[i, 5] + " " + temp1;
+                                        }
+                                    }
                                 }
                             }
                             else
@@ -322,7 +296,7 @@ namespace Ordinacije_projekt
                             }
                         }
                     }
-                }
+                
             }
             return arr;
         }

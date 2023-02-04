@@ -40,10 +40,8 @@ namespace Ordinacije_projekt
                 {
                     string passHash = hash.GetHashString(password1);
 
-                    if (SQL_code.freeUsername(username) == true)
+                    if (SQL_code.Register(username, passHash) == true)
                     {
-                        SQL_code.Register(username, passHash);
-
                         OrdinacijeWindow ordinacijeWin = new OrdinacijeWindow(username);
                         ordinacijeWin.Show();
                         this.Close();
