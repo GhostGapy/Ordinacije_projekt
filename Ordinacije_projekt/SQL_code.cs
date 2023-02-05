@@ -85,7 +85,7 @@ namespace Ordinacije_projekt
                 using (var cmd2 = new NpgsqlCommand())
                 {
                     cmd2.Connection = conn;
-                    cmd2.CommandText = "SELECT COUNT(id) FROM vrste_ordinacij;";
+                    cmd2.CommandText = "SELECT PreštejVrsticeVrstOrdinacij();";
                     using (var reader2 = cmd2.ExecuteReader())
                     {
                         while (reader2.Read())
@@ -106,31 +106,37 @@ namespace Ordinacije_projekt
             string db_password = "G4XZhDPTB0WC";
             string db_port = "5432";
 
-            string[] vrsteOr = new string[5];
-            int x = vrsteCount();
+            string[] vrste = new string[10];
 
             string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
 
             using (var conn = new NpgsqlConnection(connString))
             {
                 conn.Open();
-                for(int i = 0; i <= x; i++)
+                using (var cmd = new NpgsqlCommand())
                 {
-                    using (var cmd = new NpgsqlCommand())
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT ImenaVrstString();";
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        int _i = i + 1;
-                        cmd.Connection = conn;
-                        cmd.CommandText = "SELECT ime FROM vrste_ordinacij WHERE id="+ _i +";";
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            int i = 0;
+                            int x = 1;
+                            string vrsteImena = reader.GetString(0);
+                            string[] _vrsteImena = vrsteImena.Split('%');
+
+                            while (x < _vrsteImena.Length)
                             {
-                                vrsteOr[i] = reader.GetString(0);
+                                vrste[i] = _vrsteImena[x];
+                                i++;
+                                x++;
+
                             }
                         }
                     }
                 }
-                return vrsteOr;
+                return vrste;
             }
         }
 
@@ -152,7 +158,7 @@ namespace Ordinacije_projekt
                 using (var cmd2 = new NpgsqlCommand())
                 {
                     cmd2.Connection = conn;
-                    cmd2.CommandText = "SELECT COUNT(id) FROM kraji;";
+                    cmd2.CommandText = "SELECT PreštejVrsticeKrajev();";
                     using (var reader2 = cmd2.ExecuteReader())
                     {
                         while (reader2.Read())
@@ -175,25 +181,31 @@ namespace Ordinacije_projekt
             string db_port = "5432";
 
             string[] kraji = new string[500];
-            int x = krajiCount();
 
             string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
 
             using (var conn = new NpgsqlConnection(connString))
             {
                 conn.Open();
-                for (int i = 0; i <= x; i++)
+                using (var cmd = new NpgsqlCommand())
                 {
-                    using (var cmd = new NpgsqlCommand())
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT ImenaKrajevString();";
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        int _i = i + 1;
-                        cmd.Connection = conn;
-                        cmd.CommandText = "SELECT ime FROM kraji WHERE id=" + _i + ";";
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            int i = 0;
+                            int x = 1;
+                            string kImena = reader.GetString(0);
+                            string[] _kImena = kImena.Split('%');
+
+                            while (x < _kImena.Length)
                             {
-                                kraji[i] = reader.GetString(0);
+                                kraji[i] = _kImena[x];
+                                i++;
+                                x++;
+
                             }
                         }
                     }
@@ -221,7 +233,7 @@ namespace Ordinacije_projekt
                 using (var cmd2 = new NpgsqlCommand())
                 {
                     cmd2.Connection = conn;
-                    cmd2.CommandText = "SELECT COUNT(id) FROM ordinacije;";
+                    cmd2.CommandText = "SELECT PreštejVrsticeOrdinacij();";
                     using (var reader2 = cmd2.ExecuteReader())
                     {
                         while (reader2.Read())
