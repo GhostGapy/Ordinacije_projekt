@@ -74,8 +74,6 @@ namespace Ordinacije_projekt
             string idPart = parts[0];
             int id = int.Parse(idPart.Split('=')[1].Trim());
 
-            label_select.Content = id.ToString();
-
             if (id != 0)
             {
                 

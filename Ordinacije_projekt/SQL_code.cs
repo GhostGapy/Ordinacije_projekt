@@ -253,7 +253,6 @@ namespace Ordinacije_projekt
             string db_username = "GhostGapy";
             string db_password = "G4XZhDPTB0WC";
             string db_port = "5432";
-            int rowCount;
 
             string[,] arr = new string[40,8];
 
