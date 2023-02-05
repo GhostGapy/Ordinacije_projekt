@@ -34,7 +34,7 @@ namespace Ordinacije_projekt
             Osvezi();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)//ZAPRI
         {
             MainWindow mainWin = new MainWindow();
             mainWin.Show();
@@ -46,7 +46,7 @@ namespace Ordinacije_projekt
             Osvezi();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)//DODAJ
         {
             DodajOrdinacijo dodaj_ordinacijo = new DodajOrdinacijo();
             dodaj_ordinacijo.Show();
@@ -63,6 +63,56 @@ namespace Ordinacije_projekt
             {
                 OrdinacijeGrid.Items.Add(new { id = array[i, 0], ime = array[i, 1], naslov = array[i, 2], kraj = array[i, 3], vrsta = array[i, 4], zdravnik = array[i, 5] });
             }
+        }
+
+        
+        private void Button_Click_3(object sender, RoutedEventArgs e)//Izbriši
+        {
+
+            if (OrdinacijeGrid.SelectedItem != null)
+            {
+                string selectedItemString = OrdinacijeGrid.SelectedItem.ToString();
+
+                string[] parts = selectedItemString.Split(',');
+                string idPart = parts[0];
+                int id = int.Parse(idPart.Split('=')[1].Trim());
+
+                SQL_code.DeleteRow(id);
+            }
+            else
+            {
+                MessageBox.Show("Izberite ordinacijo!");
+            }
+            Osvezi();
+        }
+        
+        private void OrdinacijeGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+        
+        private void Button_Click_4(object sender, RoutedEventArgs e)//UREDI
+        {
+            string selectedItemString = OrdinacijeGrid.SelectedItem.ToString();
+
+            string[] parts = selectedItemString.Split(',');
+            string idPart = parts[0];
+            string imePart = parts[1];
+            string naslovPart = parts[2];
+            string krajPart = parts[3];
+            string vrstaPart = parts[4];
+            string zdravnikPart = parts[5];
+            
+            int id = int.Parse(idPart.Split('=')[1].Trim());
+            string ime = imePart.Split('=')[1].Trim();
+            string naslov = naslovPart.Split('=')[1].Trim();
+            string kraj = krajPart.Split('=')[1].Trim();
+            string vrsta = vrstaPart.Split('=')[1].Trim();
+            string zdravnik = zdravnikPart.Split('=')[1].Trim();
+            zdravnik = zdravnik.Substring(0, zdravnik.Length - 2);
+
+            EditOrdinacije editWin = new EditOrdinacije(id, ime, naslov, kraj, vrsta, zdravnik);
+            editWin.Show();
         }
     }
 }

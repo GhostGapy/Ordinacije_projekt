@@ -336,5 +336,53 @@ namespace Ordinacije_projekt
                 }
             }
         }
+
+
+
+        public static void DeleteRow(int index)
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT DeleteRow(" + index + ")";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+        public static void EditOrdinacijo(int _id, string _ime, string _vrsta, string _kraj, string _naslov, string _z_ime, string _z_priimek)
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT EditOrdinacijo(" + _id + ", '" + _ime + "', '" + _naslov + "', '" + _kraj + "', '" + _vrsta + "', '" + _z_ime + "', '" + _z_priimek + "')";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

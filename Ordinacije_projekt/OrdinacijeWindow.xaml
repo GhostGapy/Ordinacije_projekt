@@ -23,6 +23,8 @@
         <Button Content="Osveži" HorizontalAlignment="Right" Margin="0,0,10,13" VerticalAlignment="Bottom" Width="79" Height="30" VerticalContentAlignment="Center" Click="Button_Click_1"/>
         <Button Content="Dodaj" HorizontalAlignment="Right" Margin="0,0,94,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center" Click="Button_Click_2"/>
         <Button Content="Uredi" HorizontalAlignment="Right" Margin="0,0,179,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center"/>
+        <Button Content="Uredi" HorizontalAlignment="Right" Margin="0,0,179,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center" Click="Button_Click_4"/>
+        <Button Content="Izbriši" HorizontalAlignment="Right" Margin="0,0,264,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

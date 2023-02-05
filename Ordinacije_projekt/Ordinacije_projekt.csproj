@@ -106,6 +106,9 @@
     <Compile Include="DodajOrdinacijo.xaml.cs">
       <DependentUpon>DodajOrdinacijo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditOrdinacije.xaml.cs">
+      <DependentUpon>EditOrdinacije.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
     </Compile>
     <Compile Include="SQL_code.cs" />
     <Page Include="DodajOrdinacijo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditOrdinacije.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
