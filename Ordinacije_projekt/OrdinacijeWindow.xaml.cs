@@ -64,5 +64,33 @@ namespace Ordinacije_projekt
                 OrdinacijeGrid.Items.Add(new { id = array[i, 0], ime = array[i, 1], naslov = array[i, 2], kraj = array[i, 3], vrsta = array[i, 4], zdravnik = array[i, 5] });
             }
         }
+
+        
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            string selectedItemString = OrdinacijeGrid.SelectedItem.ToString();
+
+            string[] parts = selectedItemString.Split(',');
+            string idPart = parts[0];
+            int id = int.Parse(idPart.Split('=')[1].Trim());
+
+            label_select.Content = id.ToString();
+
+            if (id != 0)
+            {
+                
+                SQL_code.DeleteRow(id);
+            }
+            else
+            {
+                MessageBox.Show("Izberite ordinacijo!");
+            }
+            Osvezi();
+        }
+        
+        private void OrdinacijeGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

@@ -253,7 +253,7 @@ namespace Ordinacije_projekt
             string db_username = "GhostGapy";
             string db_password = "G4XZhDPTB0WC";
             string db_port = "5432";
-            int rowCount = RowCount();
+            int rowCount;
 
             string[,] arr = new string[40,8];
 
@@ -273,14 +273,15 @@ namespace Ordinacije_projekt
                         {
                             if (reader.HasRows)
                             {
+                            int i = 0;
                                 while (reader.Read())
                                 {
                                     string x = reader.GetString(0);
                                     string[] _x = x.Split('%');
                                     while(y < _x.Length)
                                     {
-                                        for (int i = 1; i <= rowCount; i++)
-                                        {
+                                    i = i + 1;
+                                        
                                             arr[i, 0] = _x[y];
                                             y++;
                                             arr[i, 1] = _x[y];
@@ -298,7 +299,7 @@ namespace Ordinacije_projekt
                                             y++;
 
                                             arr[i, 5] = arr[i, 5] + " " + temp1;
-                                        }
+                                        
                                     }
                                 }
                             }
@@ -332,6 +333,29 @@ namespace Ordinacije_projekt
                 {
                     cmd.Connection = conn;
                     cmd.CommandText = "SELECT DodajOrdinacijo('" + _ime + "', '" + _naslov + "', '" + _kraj + "', '" + _vrsta + "', '" + _z_ime + "', '" + _z_priimek + "')";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public static void DeleteRow(int index)
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT DeleteRow(" + index + ")";
                     cmd.ExecuteNonQuery();
                 }
             }
