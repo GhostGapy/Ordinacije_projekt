@@ -5,24 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ordinacije_projekt"
         mc:Ignorable="d"
-        Title="OrdinacijeWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Window.Resources>
-        <local:ordinacije_projekt x:Key="ordinacije_projekt"/>
-        <CollectionViewSource x:Key="ordinacijeViewSource" Source="{Binding ordinacije, Source={StaticResource ordinacije_projekt}}"/>
-    </Window.Resources>
-    <Grid Margin="0,0,0,-6" DataContext="{StaticResource ordinacijeViewSource}">
+        Title="OrdinacijeWindow" Height="501" Width="773">
+    <Grid Margin="0,0,0,-6">
         <Label x:Name="username_label" Content="Prijavljeni ste kot: _____________________" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
         <Button Content="Odjava" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="79" Height="26" Click="Button_Click"/>
-        <DataGrid x:Name="ordinacijeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="10,41,10,45">
+        <DataGrid Margin="10,41,10,65" Name="OrdinacijeGrid" ItemsSource="{Binding}" IsReadOnly="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="idColumn" Binding="{Binding id}" Header="id" Width="Auto"/>
-                <DataGridTextColumn x:Name="imeColumn" Binding="{Binding ime}" Header="ime" Width="Auto"/>
-                <DataGridTextColumn x:Name="naslovColumn" Binding="{Binding naslov}" Header="naslov" Width="Auto"/>
-                <DataGridTextColumn x:Name="kraj_idColumn" Binding="{Binding kraj_id}" Header="kraj id" Width="Auto"/>
-                <DataGridTextColumn x:Name="vrsta_idColumn" Binding="{Binding vrsta_id}" Header="vrsta id" Width="Auto"/>
+                <DataGridTextColumn x:Name="idColumn" Header="ID" Binding="{Binding id}" Width="Auto"/>
+                <DataGridTextColumn x:Name="imeColumn" Header="Ime" Binding="{Binding ime}" Width="Auto"/>
+                <DataGridTextColumn x:Name="naslovColumn" Header="Naslov" Binding="{Binding naslov}" Width="Auto"/>
+                <DataGridTextColumn x:Name="krajColumn" Header="Kraj" Binding="{Binding kraj}" Width="Auto"/>
+                <DataGridTextColumn x:Name="vrstaColumn" Header="Vrsta" Binding="{Binding vrsta}" Width="Auto"/>
+                <DataGridTextColumn x:Name="zdravnikColumn" Header="zdravnik" Binding="{Binding zdravnik}" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
-
+        <Label x:Name="label_select" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,13" VerticalAlignment="Bottom" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Content="Osveži" HorizontalAlignment="Right" Margin="0,0,10,13" VerticalAlignment="Bottom" Width="79" Height="30" VerticalContentAlignment="Center" Click="Button_Click_1"/>
+        <Button Content="Dodaj" HorizontalAlignment="Right" Margin="0,0,94,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center" Click="Button_Click_2"/>
+        <Button Content="Uredi" HorizontalAlignment="Right" Margin="0,0,179,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center"/>
+        <Button Content="Uredi" HorizontalAlignment="Right" Margin="0,0,179,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center" Click="Button_Click_4"/>
+        <Button Content="Izbriši" HorizontalAlignment="Right" Margin="0,0,264,13" VerticalAlignment="Bottom" Height="30" Width="80" VerticalContentAlignment="Center" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

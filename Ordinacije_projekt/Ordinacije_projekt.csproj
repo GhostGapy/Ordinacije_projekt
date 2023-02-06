@@ -103,6 +103,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DodajOrdinacijo.xaml.cs">
+      <DependentUpon>DodajOrdinacijo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditOrdinacije.xaml.cs">
+      <DependentUpon>EditOrdinacije.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -118,6 +124,14 @@
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQL_code.cs" />
+    <Page Include="DodajOrdinacijo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditOrdinacije.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
