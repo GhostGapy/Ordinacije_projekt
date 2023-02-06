@@ -5,11 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ordinacije_projekt"
         mc:Ignorable="d"
-        Title="Login" Height="292" Width="356">
+        Title="Login Page" Height="312" Width="420"
+        ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="username_box" HorizontalAlignment="Left" Margin="55,59,0,0" TextWrapping="Wrap" Text="a" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Prijavi se" HorizontalAlignment="Left" Margin="55,144,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <PasswordBox x:Name="password_box" HorizontalAlignment="Left" Margin="55,99,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Nazaj" HorizontalAlignment="Left" Margin="155,139,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Grid Background="#EEEEEE" Margin="10,10,10,10">
+            <TextBox x:Name="username_box" HorizontalAlignment="Left" Margin="140,75,0,0" TextWrapping="Wrap" Text="a" VerticalAlignment="Top" Width="203" Height="20"/>
+            <Button Content="Prijavi se" HorizontalAlignment="Left" Margin="84,193,0,0" VerticalAlignment="Top" Click="Button_Click" Height="35" Width="80"/>
+            <PasswordBox x:Name="password_box" HorizontalAlignment="Left" Margin="140,119,0,0" VerticalAlignment="Top" Width="203"/>
+            <Button Content="Nazaj" HorizontalAlignment="Left" Margin="202,193,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="35" Width="80"/>
+            <Label Margin="134,137,130,96" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Hyperlink Click="Hyperlink_Click">
+                    <TextBlock Text="Pozabili geslo?" Height="18" Width="59" FontSize="9"/>
+                </Hyperlink>
+            </Label>
+            <Label Content="Uporabniško ime:" HorizontalAlignment="Left" Margin="31,72,0,0" VerticalAlignment="Top"/>
+            <Label Content="Geslo:" HorizontalAlignment="Left" Margin="31,115,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="103"/>
+            <Label Content="PRIJAVA" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" FontSize="22" Width="162"/>
+        </Grid>
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -383,6 +384,33 @@ namespace Ordinacije_projekt
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+
+
+        public static bool ChangePassword(string _username,  string _password)
+        {
+            string db_host = "ep-purple-breeze-177741.eu-central-1.aws.neon.tech";
+            string db_name = "neondb";
+            string db_username = "GhostGapy";
+            string db_password = "G4XZhDPTB0WC";
+            string db_port = "5432";
+
+            bool x=false;
+
+            string connString = String.Format("Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer", db_host, db_username, db_name, db_port, db_password);
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT ChangePassword('" + _username + "', '" + _password + "')";
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return x;
         }
     }
 }

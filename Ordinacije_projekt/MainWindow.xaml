@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ordinacije_projekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="500">
+        Title="Evidenca Zdravniških Ordinacij" Height="409" Width="393"
+        ResizeMode="NoResize">
     <Grid>
-        <Label Width="450" HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+        <Label Width="450" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center">
             <TextBlock TextWrapping="WrapWithOverflow" Width="290" TextAlignment="Center" HorizontalAlignment="Center" FontSize="22" Height="109" VerticalAlignment="Center">
                 EVIDENCA ZDRAVNIŠKIH ORDINACIJ
             </TextBlock>
         </Label>
-        <Button Content="PRIJAVI SE" HorizontalAlignment="Center" Margin="0,183,0,0" VerticalAlignment="Top" Height="44" Width="176" FontSize="14" Click="Button_Click"/>
-        <Button Content="REGISTRERAJ SE" HorizontalAlignment="Center" Margin="0,256,0,0" VerticalAlignment="Top" Height="44" Width="176" FontSize="14" Click="Button_Click_1"/>
+        <Button Content="PRIJAVI SE" HorizontalAlignment="Center" Margin="0,228,0,0" VerticalAlignment="Top" Height="44" Width="176" FontSize="14" Click="Button_Click"/>
+        <Button Content="REGISTRERAJ SE" HorizontalAlignment="Center" Margin="0,293,0,0" VerticalAlignment="Top" Height="44" Width="176" FontSize="14" Click="Button_Click_1"/>
+        <Image Source="/zdravstvo_logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Height="114" Width="114" Margin="0,100,0,0"/>
     </Grid>
 </Window>

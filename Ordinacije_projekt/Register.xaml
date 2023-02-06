@@ -5,12 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ordinacije_projekt"
         mc:Ignorable="d"
-        Title="Register" Height="323" Width="352">
+        Title="Registracija" Height="334" Width="375"
+        ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="username_box" HorizontalAlignment="Left" Margin="55,59,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Registreraj" HorizontalAlignment="Left" Margin="55,197,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <PasswordBox x:Name="password1_box" HorizontalAlignment="Left" Margin="55,99,0,0" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="password2_box" HorizontalAlignment="Left" Margin="55,134,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Nazaj" HorizontalAlignment="Left" Margin="176,192,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Grid Background="#EEEEEE" Margin="10,10,10,10">
+            <TextBox x:Name="username_box" HorizontalAlignment="Left" Margin="123,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
+            <Button Content="Registreraj se" HorizontalAlignment="Left" Margin="81,222,0,0" VerticalAlignment="Top" Click="Button_Click" Height="32" Width="84"/>
+            <PasswordBox x:Name="password1_box" HorizontalAlignment="Left" Margin="123,123,0,0" VerticalAlignment="Top" Width="183"/>
+            <PasswordBox x:Name="password2_box" HorizontalAlignment="Left" Margin="123,158,0,0" VerticalAlignment="Top" Width="183"/>
+            <Button Content="Nazaj" HorizontalAlignment="Left" Margin="190,222,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="32" Width="84"/>
+            <Label Content="REGISTRACIJA" HorizontalAlignment="Left" Margin="99,17,0,0" VerticalAlignment="Top" FontSize="22" Width="168"/>
+            <Label Content="Uporabniško ime:" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Right"/>
+            <Label Content="Vpišite geslo:" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Right"/>
+            <Label Content="Ponovite geslo:" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="108" HorizontalContentAlignment="Right"/>
+        </Grid>
     </Grid>
 </Window>
