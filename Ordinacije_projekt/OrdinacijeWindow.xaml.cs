@@ -51,7 +51,7 @@ namespace Ordinacije_projekt
             DodajOrdinacijo dodaj_ordinacijo = new DodajOrdinacijo();
             dodaj_ordinacijo.Show();
         }
-
+        
         public void Osvezi()
         {
             OrdinacijeGrid.Items.Clear();
@@ -61,7 +61,8 @@ namespace Ordinacije_projekt
 
             for (int i = 1; i <= rowCount; i++)
             {
-                OrdinacijeGrid.Items.Add(new { id = array[i, 0], ime = array[i, 1], naslov = array[i, 2], kraj = array[i, 3], vrsta = array[i, 4], zdravnik = array[i, 5] });
+                int _id = Convert.ToInt32(array[i, 0]);
+                OrdinacijeGrid.Items.Add(new { id = _id, ime = array[i, 1], naslov = array[i, 2], kraj = array[i, 3], vrsta = array[i, 4], zdravnik = array[i, 5] });
             }
         }
 

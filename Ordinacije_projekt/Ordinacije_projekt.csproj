@@ -120,6 +120,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ordinacije_projekt.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PozabljenoGeslo.xaml.cs">
+      <DependentUpon>PozabljenoGeslo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OrdinacijeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PozabljenoGeslo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

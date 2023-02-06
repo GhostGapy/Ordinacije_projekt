@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Ordinacije_projekt
@@ -49,6 +50,18 @@ namespace Ordinacije_projekt
         {
             MainWindow mainWin = new MainWindow();
             mainWin.Show();
+            this.Close();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            PozabljenoGeslo pozabljenoGesloWin = new PozabljenoGeslo();
+            pozabljenoGesloWin.Show();
             this.Close();
         }
     }
