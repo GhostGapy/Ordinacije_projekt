@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ordinacije_projekt"
         mc:Ignorable="d"
-        Title="EditOrdinacije" Height="340" Width="409">
+        Title="EditOrdinacije" Height="340" Width="409"
+        ResizeMode="CanMinimize">
     <Grid Margin="0,0,10,-6">
         <Grid Background="#EEEEEE" Margin="10,10,0,20">
             <Label Content="Naslov:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,88,0,0" Width="75" Height="30" HorizontalContentAlignment="Center"/>
